@@ -1,11 +1,4 @@
-FROM openjdk:8-jdk-alpine
-
-COPY ./target/achat-1.0.jar /usr/app/
-
-WORKDIR /usr/app
-
-EXPOSE 8083
-
-RUN sh -c 'touch demo-docker-0.0.1-SNAPSHOT.jar'
-
-ENTRYPOINT ["java","-jar","project-1.0.jar"]
+FROM openjdk:8
+ADD target/spring-boot-docker.jar spring-boot-docker.jar
+EXPOSE 8089
+ENTRYPOINT [ "java", "-jar", "spring-boot-docker.jar" ]
